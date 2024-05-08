@@ -1,0 +1,22 @@
+from Lights import *
+from Buzzer import *
+from LightStrip import *
+from Displays import LCDDisplay
+
+red = Light(6, "Red Light")
+green = Light(7, "Green Light")
+buzzer = PassiveBuzzer(16)
+mylightstrip = LightStrip(name="My Light Strip", pin=2, numleds=16)
+mydisplay = LCDDisplay (sda=0, scl= 1, i2cid=0)
+
+mydisplay.showText("Hello World")
+
+# repeat forever loop and blink the red and green in turn
+for x in range(0,10): 
+  # Blink the red once
+  red.blink(delay=0.5, times=1)
+  # Blink the green once
+  green.blink(delay=0.5, times=1)
+
+  mylightstrip.blink(delay=0.5,times=1)
+  buzzer.beep(tone=100)
